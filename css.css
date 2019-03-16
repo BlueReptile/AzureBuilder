@@ -1,0 +1,4 @@
+.md-autocomplete-suggestions-container .md-autocomplete-suggestions li {
+  line-height: inherit;
+  height: auto;
+}
