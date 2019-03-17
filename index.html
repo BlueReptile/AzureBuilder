@@ -14,26 +14,26 @@
       <md-card flex-order>
         <md-card-content>
           <h2>Ship and Equips</h2>
-          <md-autocomplete placeholder="ShipGirl Name" style="width: 500;" md-no-cache="true" md-selected-item="selectedItem" md-items="item in query(searchText)" md-search-text="searchText" md-item-text="item.names.en">
+          <md-autocomplete placeholder="ShipGirl Name" style="width: 500;" md-no-cache="true" md-selected-item="selectedShip" md-items="ship in query(searchText)" md-search-text="searchText" md-item-text="ship.names.en">
             <md-item-template layout-align="center center">
-                <img ng-src="{{item.images[0].url}}" alt="item.names.en" style="width: 100; height: auto;float: left;"/>
-                <a style="font-size: 20;padding-left: 10">{{item.names.en}}</a>
+                <img ng-src="{{ship.images[0].url}}" alt="ship.names.en" style="width: 100; height: auto;float: left;"/>
+                <a style="font-size: 20;padding-left: 10">{{ship.names.en}}</a>
             </md-item-template>
           </md-autocomplete>
-          <div ng-show="selectedItem" layout="row" layout-align="center">
+          <div ng-show="selectedShip" layout="row" layout-align="center">
             <md-card flex-order>
               <md-card-content>
-                <h5>{{selectedItem.equipment[0].equipable}}</h5>
+                <h5>{{selectedShip.equipment[0].equipable}}</h5>
               </md-card-content>
             </md-card>
             <md-card flex-order>
               <md-card-content>
-                  <h5>{{selectedItem.equipment[1].equipable}}</h5>
+                  <h5>{{selectedShip.equipment[1].equipable}}</h5>
               </md-card-content>
             </md-card>
             <md-card flex-order>
               <md-card-content>
-                  <h5>{{selectedItem.equipment[2].equipable}}</h5>
+                  <h5>{{selectedShip.equipment[2].equipable}}</h5>
               </md-card-content>
             </md-card>
             <md-card flex-order>
@@ -53,21 +53,82 @@
         <md-card-content >
           <h2>Ship Stats</h2>
           <div layout="row" layout-align="end-start">
-          <img ng-show="selectedItem" ng-src="{{selectedItem.images[0].url}}" alt="item.names.en" style="width: 200; height: auto;"/>
-          <ul ng-show="selectedItem">
-            <li>Ship: {{selectedItem.names.en}}</li>
-            <li>Class: {{selectedItem.class}}</li>
-            <li>Armor: {{selectedItem.max.armor}}</li>
-            <li><a style="float:left">Health: </a> <div ng-show="selectedItem" class="bar" ng-style="{'background-color': '#5ec45e','width':((stats.health.base*100) / stats.health.total)}"><md-tooltip md-direction="top">Base Health: {{stats.health.base}}</md-tooltip></div><div ng-show="selectedItem" class="bar" ng-style="{'background-color': '#07910e','width':((stats.health.equip*100) / stats.health.total)}"><md-tooltip md-direction="top">Itens Health: {{stats.health.equip}}</md-tooltip></div> {{stats.health.total}}  </li>
-            <li>Reload: {{selectedItem.max.reload}}</li>
-            <li>Firepower: {{selectedItem.max.firepower}}</li>
-            <li>Torpedo: {{selectedItem.max.torpedo}}</li>
-            <li>Speed: {{selectedItem.max.speed}}</li>
-            <li>Anti Air: {{selectedItem.max.anti_air}}</li>
-            <li>Air Power: {{selectedItem.max.air_power}}</li>
-            <li>Oil Usage: {{selectedItem.max.oil_usage}}</li>
-            <li>Anti Sub: {{selectedItem.max.anti_sub}}</li>
+          <img ng-show="selectedShip" ng-src="{{selectedShip.images[0].url}}" alt="ship.names.en" style="width: 200; height: auto;"/>
+          <div>
+          <ul>
+              <li>Ship: {{selectedShip.names.en}}</li>
+              <li>Class: {{selectedShip.class}}</li>
+              <li>Armor: {{selectedShip.max.armor}}</li>
           </ul>
+          <table ng-show="selectedShip">
+          <tr>
+            <th>Stats</th>
+            <th>Base</th>
+            <th>Equips</th>
+            <th>Total</th>
+          </tr>
+          <tr>
+            <th>Health:</th>
+            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#5ec45e','width':((stats.health.base*100) / stats.health.total)}"><md-tooltip md-direction="top">Base Health: {{stats.health.base}}</md-tooltip></div></th>
+            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#07910e','width':((stats.health.equip*100) / stats.health.total)}"><md-tooltip md-direction="top">Itens Health: {{stats.health.equip}}</md-tooltip></div></th>
+            <th>{{stats.health.total}}</th>
+          </tr>
+          <tr>
+            <th>Reload:</th>
+            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#7faef9','width':((stats.reload.base*100) / stats.reload.total)}"><md-tooltip md-direction="top">Base Reload: {{stats.reload.base}}</md-tooltip></div></th>
+            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#688ec9','width':((stats.reload.equip*100) / stats.reload.total)}"><md-tooltip md-direction="top">Itens Reload: {{stats.reload.equip}}</md-tooltip></div></th>
+            <th>{{stats.reload.total}}</th>
+          </tr>
+          <tr>
+            <th>Firepower:</th>
+            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#c96868','width':((stats.firepower.base*100) / stats.firepower.total)}"><md-tooltip md-direction="top">Base firepower: {{stats.firepower.base}}</md-tooltip></div></th>
+            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#a55454','width':((stats.firepower.equip*100) / stats.firepower.total)}"><md-tooltip md-direction="top">Itens firepower: {{stats.firepower.equip}}</md-tooltip></div></th>
+            <th>{{stats.firepower.total}}</th>
+          </tr>
+          <tr>
+            <th>Torpedo:</th>
+            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#8f42f4','width':((stats.torpedo.base*100) / stats.torpedo.total)}"><md-tooltip md-direction="top">Base torpedo: {{stats.torpedo.base}}</md-tooltip></div></th>
+            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#7435c6','width':((stats.torpedo.equip*100) / stats.torpedo.total)}"><md-tooltip md-direction="top">Itens torpedo: {{stats.torpedo.equip}}</md-tooltip></div></th>
+            <th>{{stats.torpedo.total}}</th>
+          </tr>
+          <tr>
+            <th>Speed:</th>
+            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#e5df39','width':((stats.speed.base*100) / stats.speed.total)}"><md-tooltip md-direction="top">Base torpedo: {{stats.speed.base}}</md-tooltip></div></th>
+            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#c6c135','width':((stats.speed.equip*100) / stats.speed.total)}"><md-tooltip md-direction="top">Itens torpedo: {{stats.speed.equip}}</md-tooltip></div></th>
+            <th>{{stats.speed.total}}</th>
+          </tr>
+          <tr>
+            <th>Anti Air:</th>
+            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#ce4ae0','width':((stats.anti_air.base*100) / stats.anti_air.total)}"><md-tooltip md-direction="top">Base anti_air: {{stats.anti_air.base}}</md-tooltip></div></th>
+            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#9a30a8','width':((stats.anti_air.equip*100) / stats.anti_air.total)}"><md-tooltip md-direction="top">Itens anti_air: {{stats.anti_air.equip}}</md-tooltip></div></th>
+            <th>{{stats.anti_air.total}}</th>
+          </tr>
+          <tr>
+            <th>Air Power:</th>
+            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#d1d1d1','width':((stats.air_power.base*100) / stats.air_power.total)}"><md-tooltip md-direction="top">Base air_power: {{stats.air_power.base}}</md-tooltip></div></th>
+            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#8e8e8e','width':((stats.air_power.equip*100) / stats.air_power.total)}"><md-tooltip md-direction="top">Itens air_power: {{stats.air_power.equip}}</md-tooltip></div></th>
+            <th>{{stats.air_power.total}}</th>
+          </tr>
+          <tr>
+            <th>Oil Usage:</th>
+            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#8e7e63','width':((stats.oil_usage.base*100) / stats.oil_usage.total)}"><md-tooltip md-direction="top">Base oil_usage: {{stats.oil_usage.base}}</md-tooltip></div></th>
+            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#514127','width':((stats.oil_usage.equip*100) / stats.oil_usage.total)}"><md-tooltip md-direction="top">Itens oil_usage: {{stats.oil_usage.equip}}</md-tooltip></div></th>
+            <th>{{stats.oil_usage.total}}</th>
+          </tr>
+          <tr>
+            <th>Anti Sub:</th>
+            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#22d2d8','width':((stats.anti_sub.base*100) / stats.anti_sub.total)}"><md-tooltip md-direction="top">Base anti_sub: {{stats.anti_sub.base}}</md-tooltip></div></th>
+            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#18a1a5','width':((stats.anti_sub.equip*100) / stats.anti_sub.total)}"><md-tooltip md-direction="top">Itens anti_sub: {{stats.anti_sub.equip}}</md-tooltip></div></th>
+            <th>{{stats.anti_sub.total}}</th>
+          </tr>
+          </table>
+        </div>
+          <div ng-show="selectedShip">
+            <li><a style="float:left">Anti Sub:</a> {{selectedShip.max.anti_sub}}</li>
+          </div>
+
+
+
         </div>
         </md-card-content>
         </md-card>
