@@ -11,8 +11,8 @@ ul{
   height: 10;
   float: left;
   margin: 1 1 1 1;
-  border: 0.1;
-  border-color: black;
+  border-width: 0.5;
+  border-color: white;
   border-style: solid; 
   border-radius: 5px;
 }
@@ -23,6 +23,26 @@ body {
   background-attachment: fixed;
   background-position: center; 
   background-size: cover;
-  font-family: BankGthd;
-  src: url(static\BankGthd.ttf);
+  font-family: "Lato" !important; 
+  color: white !important;
+	text-shadow: 2px 2px black;
+}
+
+.left-element {
+    display: inline-block;
+    float: left;
+	z-index: 2;
+}
+
+.right-element {
+    display: inline-block;
+    float: right;
+	z-index: 2;
+}
+md-card{
+	background-image: url(cardtest-parte4.png);
+	background-size:100% 100%;
+}
+md-card-content{
+	margin-top:10px;
 }

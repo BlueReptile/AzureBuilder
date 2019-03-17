@@ -5,60 +5,82 @@
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css">
   <link rel="stylesheet" href="css.css">
 </head>
-<body ng-controller="AzureCtrl" ng-cloak>
+<body ng-controller="AzureCtrl"  ng-cloak>
   <!--
     Your HTML content here
   -->
   
-  <div layout="row" layout-align="center" layout-xs="column">
+  <div layout="row" layout-align="center center" layout-xs="column">
+
       <md-card flex-order>
+          <barraTop>
+              <img src="cardtest-parte2.png" style="width:100%;height:42px;">
+                 <div style="margin-top:-42px;position: relative;">
+                <img src="cardtest-parte1.png" style="max-width:236px;max-height:42px;" class="left-element">
+                <img src="cardtest-parte3.png" style="max-width:236px;max-height:42px;" class="right-element">
+                 </div>
+          </barraTop>
         <md-card-content>
-          <h2>Ship and Equips</h2>
+          <h2 md-colors="{'color':'grey-A100'}">Ship and Equips</h2>
           <md-autocomplete placeholder="ShipGirl Name" style="width: 500;" md-no-cache="true" md-selected-item="selectedShip" md-items="ship in query(searchText)" md-search-text="searchText" md-item-text="ship.names.en">
             <md-item-template layout-align="center center">
+              <div md-colors="{'background':'grey-800'}" >
                 <img ng-src="{{ship.icon}}" alt="ship.names.en" style="width: 100; height: auto;float: left;"/>
-                <a style="font-size: 20;padding-left: 10">{{ship.names.en}}</a>
+                <a md-colors="{'color':'grey-A100'}" style="font-size: 20;padding-left: 10">{{ship.names.en}}</a>
+              </div>
             </md-item-template>
           </md-autocomplete>
           <div ng-show="selectedShip" layout="row" layout-align="center">
             <md-card flex-order>
               <md-card-content>
-                <h5>{{selectedShip.equipment[0].equipable}}</h5>
+                <h5 md-colors="{'color':'grey-A100'}">{{selectedShip.equipment[0].equipable}}</h5>
               </md-card-content>
             </md-card>
             <md-card flex-order>
               <md-card-content>
-                  <h5>{{selectedShip.equipment[1].equipable}}</h5>
+                  <h5 md-colors="{'color':'grey-A100'}">{{selectedShip.equipment[1].equipable}}</h5>
               </md-card-content>
             </md-card>
             <md-card flex-order>
               <md-card-content>
-                  <h5>{{selectedShip.equipment[2].equipable}}</h5>
+                  <h5 md-colors="{'color':'grey-A100'}">{{selectedShip.equipment[2].equipable}}</h5>
               </md-card-content>
             </md-card>
             <md-card flex-order>
               <md-card-content>
-                  <h5>Auxiliary</h5>
+                  <h5 md-colors="{'color':'grey-A100'}" ng-show="selectedShip">Auxiliary</h5>
               </md-card-content>
             </md-card>
             <md-card flex-order>
               <md-card-content>
-                  <h5>Auxiliary</h5>
+                  <h5 md-colors="{'color':'grey-A100'}" ng-show="selectedShip">Auxiliary</h5>
               </md-card-content>
             </md-card>
           </div>  
         </md-card-content>
+        <barraBottom>
+            <img src="cardtest-parte5.png" style="width:100%;height:4px;">
+        </barraBottom>
         </md-card>
+        
+
       <md-card flex-order>
+          <barraTop>
+              <img src="cardtest-parte2.png" style="width:100%;height:42px;">
+                 <div style="margin-top:-42px;position: relative;">
+                <img src="cardtest-parte1.png" style="max-width:236px;max-height:42px;" class="left-element">
+                <img src="cardtest-parte3.png" style="max-width:236px;max-height:42px;" class="right-element">
+                 </div>
+          </barraTop>
         <md-card-content >
-          <h2>Ship Stats</h2>
-          <div layout="row" layout-align="end-start">
-          <img ng-show="selectedShip" ng-src="{{selectedShip.images[0].url}}" alt="ship.names.en" style="width: 200; height: auto;"/>
+          <h2 md-colors="{'color':'grey-A100'}">Ship Stats</h2>
+          <div ng-show="selectedShip" layout="row" layout-align="end-start">
+          <img ng-src="{{selectedShip.images[0].url}}" alt="ship.names.en" style="width: 250; height: 400;object-fit: contain"/>
           <div>
           <ul>
-              <li>Ship: {{selectedShip.names.en}}</li>
-              <li>Class: {{selectedShip.class}}</li>
-              <li>Armor: {{selectedShip.max.armor}}</li>
+              <li md-colors="{'color':'grey-A100'}">Ship: {{selectedShip.names.en}}</li>
+              <li md-colors="{'color':'grey-A100'}">Class: {{selectedShip.class}}</li>
+              <li md-colors="{'color':'grey-A100'}">Armor: {{selectedShip.max.armor}}</li>
           </ul>
           <table ng-show="selectedShip">
           <tr>
@@ -122,16 +144,14 @@
             <th>{{stats.anti_sub.total}}</th>
           </tr>
           </table>
-        </div>
-          <div ng-show="selectedShip">
-            <li><a style="float:left">Anti Sub:</a> {{selectedShip.max.anti_sub}}</li>
           </div>
-
-
-
         </div>
         </md-card-content>
+        <barraBottom>
+            <img src="cardtest-parte5.png" style="width:100%;height:4px;">
+        </barraBottom>
         </md-card>
+
     </div>
   
   <!-- Angular Material requires Angular.js Libraries -->
