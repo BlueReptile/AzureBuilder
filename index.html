@@ -14,39 +14,55 @@
       <md-card flex-order>
         <md-card-content>
           <h2>Ship and Equips</h2>
-          <md-autocomplete style="width: 300;" md-no-cache="true" md-selected-item="selectedItem" md-items="item in query(searchText)" md-search-text="searchText" md-item-text="item.names.en">
+          <md-autocomplete style="width: 500;" md-no-cache="true" md-selected-item="selectedItem" md-items="item in query(searchText)" md-search-text="searchText" md-item-text="item.names.en">
             <md-item-template layout-align="center center">
                 <img ng-src="{{item.images[0].url}}" alt="item.names.en" style="width: 100; height: auto;float: left;"/>
                 <a style="font-size: 20;padding-left: 10">{{item.names.en}}</a>
             </md-item-template>
           </md-autocomplete>
+          <div ng-show="selectedItem" layout="row" layout-align="center">
+            <md-card flex-order>
+              <md-card-content>
+                <h5>{{selectedItem.equipment[0].equipable}}</h5>
+              </md-card-content>
+            </md-card>
+            <md-card flex-order>
+              <md-card-content>
+                  <h5>{{selectedItem.equipment[1].equipable}}</h5>
+              </md-card-content>
+            </md-card>
+            <md-card flex-order>
+              <md-card-content>
+                  <h5>{{selectedItem.equipment[2].equipable}}</h5>
+              </md-card-content>
+            </md-card>
+            <md-card flex-order>
+              <md-card-content>
+                  <h5>Auxiliary</h5>
+              </md-card-content>
+            </md-card>
+            <md-card flex-order>
+              <md-card-content>
+                  <h5>Auxiliary</h5>
+              </md-card-content>
+            </md-card>
+          </div>  
         </md-card-content>
-        <md-card-footer>
-          Card footer
-        </md-card-footer>
         </md-card>
-
       <md-card flex-order>
         <md-card-content >
           <h2>Ship Stats</h2>
           <div layout="row" layout-align="end-start">
           <img ng-show="selectedItem" ng-src="{{selectedItem.images[0].url}}" alt="item.names.en" style="width: 200; height: auto;"/>
-          
-          
-          <div>
-          <canvas ng-show="selectedItem" id="radar" class="chart chart-radar" chat-data="data" chart-labels="labels"></canvas>
-          </div>
-          
           <ul>
             <li>Ship: {{selectedItem.names.en}}</li>
             <li>Class: {{selectedItem.class}}</li>
-            <li>Health: {{selectedItem.max.health}}</li>
             <li>Armor: {{selectedItem.max.armor}}</li>
+            <li><a style="float:left">Health: </a> <div ng-show="selectedItem" class="bar" ng-style="{'width':((stats.health.base*100) / stats.health.total)}"><md-tooltip md-direction="top">Base Health: {{stats.health.base}}</md-tooltip></div><div ng-show="selectedItem" class="bar" ng-style="{'width':((stats.health.equip*100) / stats.health.total)}"><md-tooltip md-direction="top">Itens Health: {{stats.health.equip}}</md-tooltip></div> {{stats.health.total}}  </li>
             <li>Reload: {{selectedItem.max.reload}}</li>
             <li>Firepower: {{selectedItem.max.firepower}}</li>
             <li>Torpedo: {{selectedItem.max.torpedo}}</li>
             <li>Speed: {{selectedItem.max.speed}}</li>
-            <li>Torpedo: {{selectedItem.max.torpedo}}</li>
             <li>Anti Air: {{selectedItem.max.anti_air}}</li>
             <li>Air Power: {{selectedItem.max.air_power}}</li>
             <li>Oil Usage: {{selectedItem.max.oil_usage}}</li>
@@ -54,9 +70,6 @@
           </ul>
         </div>
         </md-card-content>
-        <md-card-footer>
-          Card footer
-        </md-card-footer>
         </md-card>
     </div>
   

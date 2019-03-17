@@ -2,3 +2,18 @@
   line-height: inherit;
   height: auto;
 }
+
+ul{
+  list-style-type:none;
+  }
+
+.bar{
+  background-color: #09a509;
+  height: 15;
+  float: left;
+  margin: 2 2 2 2;
+  border: 0.2 0.2 0.2 0.2;
+  border-color: black;
+  border-style: solid; 
+  border-radius: 5px;
+}
