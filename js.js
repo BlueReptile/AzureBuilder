@@ -41,6 +41,11 @@
               equip: 0,
               total: $scope.selectedShip.max.anti_air + 0
             },
+            air_power: {
+              base: $scope.selectedShip.max.air_power,
+              equip: 0,
+              total: $scope.selectedShip.max.air_power + 0
+            },
             oil_usage: {
               base: $scope.selectedShip.max.oil_usage,
               equip: 0,

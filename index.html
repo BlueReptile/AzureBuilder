@@ -16,7 +16,7 @@
           <h2>Ship and Equips</h2>
           <md-autocomplete placeholder="ShipGirl Name" style="width: 500;" md-no-cache="true" md-selected-item="selectedShip" md-items="ship in query(searchText)" md-search-text="searchText" md-item-text="ship.names.en">
             <md-item-template layout-align="center center">
-                <img ng-src="{{ship.images[0].url}}" alt="ship.names.en" style="width: 100; height: auto;float: left;"/>
+                <img ng-src="{{ship.icon}}" alt="ship.names.en" style="width: 100; height: auto;float: left;"/>
                 <a style="font-size: 20;padding-left: 10">{{ship.names.en}}</a>
             </md-item-template>
           </md-autocomplete>
