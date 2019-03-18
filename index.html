@@ -30,7 +30,7 @@
               </div>
             </md-item-template>
           </md-autocomplete>
-          <div ng-show="selectedShip" layout="row" layout-align="center center">
+          <div ng-show="selectedShip" layout="row" layout-align="center center" layout-xs="column">
             <md-card flex-order>
               <md-card-content>
                 <h5 md-colors="{'color':'grey-A100'}">{{selectedShip.equipment[0].equipable}}</h5>
@@ -72,20 +72,20 @@
           </barraTop>
         <md-card-content >
           <h2 md-colors="{'color':'grey-A100'}">Ship Stats</h2>
-          <div ng-show="selectedShip" layout="row" layout-align="end-start">
+          <div ng-show="selectedShip" layout="row" layout-align="end-start" layout-xs="column">
           <img ng-src="{{selectedShip.images[0].url}}" alt="ship.names.en" style="width: 250; height: 400;object-fit: contain"/>
           <div>
           <ul>
-              <li md-colors="{'color':'grey-A100'}">Ship: {{selectedShip.names.en}}</li>
-              <li md-colors="{'color':'grey-A100'}">Class: {{selectedShip.class}}</li>
-              <li md-colors="{'color':'grey-A100'}">Armor: {{selectedShip.max.armor}}</li>
+              <li md-colors="{'color':'grey-A100'}"><a md-colors="{'color':'yellow'}">Ship:</a> {{selectedShip.names.en}}</li>
+              <li md-colors="{'color':'grey-A100'}"><a md-colors="{'color':'yellow'}">Class:</a> {{selectedShip.class}}</li>
+              <li md-colors="{'color':'grey-A100'}"><a md-colors="{'color':'yellow'}">Armor:</a> {{selectedShip.max.armor}}</li>
           </ul>
           <table ng-show="selectedShip">
           <tr>
-            <th>Stats</th>
-            <th>Base</th>
-            <th>Equips</th>
-            <th>Total</th>
+            <th md-colors="{'color':'yellow'}">Stats</th>
+            <th md-colors="{'color':'yellow'}">Base</th>
+            <th md-colors="{'color':'yellow'}">Equips</th>
+            <th md-colors="{'color':'yellow'}">Total</th>
           </tr>
           <tr>
             <th>Health:</th>
