@@ -40,7 +40,7 @@ body {
 	z-index: 2;
 }
 md-card{
-	background-image: url(cardtest-parte4.png);
+	background-image: url("static/cardtest-parte4.png");
 	background-size:100% 100%;
 }
 md-card-content{
