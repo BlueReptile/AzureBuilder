@@ -28,17 +28,28 @@ body {
 	text-shadow: 2px 2px black;
 }
 
+@media (max-width: 600px){
+  .right-element {
+    display: inline-block;
+    float: right;
+    z-index: 2;
+    margin-top: -42px;
+}
+}
+
+.right-element {
+  display: inline-block;
+  float: right;
+  z-index: 2;
+}
+
 .left-element {
     display: inline-block;
     float: left;
 	  z-index: 3;
 }
 
-.right-element {
-    display: inline-block;
-    float: right;
-	z-index: 2;
-}
+
 md-card{
 	background-image: url("static/cardtest-parte4.png");
 	background-size:100% 100%;
