@@ -31,7 +31,7 @@ body {
 .left-element {
     display: inline-block;
     float: left;
-	z-index: 2;
+	  z-index: 3;
 }
 
 .right-element {
