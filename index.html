@@ -11,8 +11,7 @@
   -->
   
   <div layout="row" layout-align="center center" layout-xs="column">
-
-      <md-card flex-order>
+      <md-card class="custom" flex-order>
           <barraTop>
               <img src="static/cardtest-parte2.png" style="width:100%;height:42px;">
                  <div style="margin-top:-42px;position: relative;">
@@ -20,7 +19,7 @@
                 <img src="static/cardtest-parte3.png" style="max-width:236px;max-height:42px;" class="right-element">
                  </div>
           </barraTop>
-        <md-card-content layout="column" layout-align="center center">
+        <md-card-content class="content" layout="column" layout-align="center center">
           <h2 md-colors="{'color':'grey-A100'}">Ship and Equips</h2>
           <md-autocomplete placeholder="ShipGirl Name" style="width: 300;" md-no-cache="true" md-selected-item="selectedShip" md-items="ship in query(searchText)" md-search-text="searchText" md-item-text="ship.names.en">
             <md-item-template layout-align="center center">
@@ -31,30 +30,30 @@
             </md-item-template>
           </md-autocomplete>
           <div ng-show="selectedShip" layout="row" layout-align="center center" layout-xs="column">
-            <md-card flex-order>
-              <md-card-content>
+              <md-card layout="column" layout-align="center center"  md-colors="{'background':'grey-800'}">
                 <h5 md-colors="{'color':'grey-A100'}">{{selectedShip.equipment[0].equipable}}</h5>
-              </md-card-content>
-            </md-card>
-            <md-card flex-order>
-              <md-card-content>
+                <md-button md-colors="{'color':'grey-A100'}" style="font-size: 20px">+</md-button>
+                <div ng-show="selectedFirstEq"></div>
+              </md-card>
+              <md-card layout="column" layout-align="center center"  md-colors="{'background':'grey-800'}">
                   <h5 md-colors="{'color':'grey-A100'}">{{selectedShip.equipment[1].equipable}}</h5>
-              </md-card-content>
-            </md-card>
-            <md-card flex-order>
-              <md-card-content>
+                  <md-button md-colors="{'color':'grey-A100'}" style="font-size: 20px">+</md-button>
+                  <div ng-show="selectedSecondEq"></div>
+              </md-card>
+              <md-card layout="column" layout-align="center center"  md-colors="{'background':'grey-800'}">
                   <h5 md-colors="{'color':'grey-A100'}">{{selectedShip.equipment[2].equipable}}</h5>
-              </md-card-content>
+                  <md-button md-colors="{'color':'grey-A100'}" style="font-size: 20px">+</md-button>
+                  <div ng-show="selectedThirdEq"></div>
             </md-card>
-            <md-card flex-order>
-              <md-card-content>
-                  <h5 md-colors="{'color':'grey-A100'}" ng-show="selectedShip">Auxiliary</h5>
-              </md-card-content>
+              <md-card layout="column" layout-align="center center"  md-colors="{'background':'grey-800'}">
+                  <h5 md-colors="{'color':'grey-A100'}" ng-show="selectedShip">Auxiliary Equipment</h5>
+                  <md-button md-colors="{'color':'grey-A100'}" style="font-size: 20px">+</md-button>
+                  <div ng-show="selectedFourthEq"></div>
             </md-card>
-            <md-card flex-order>
-              <md-card-content>
-                  <h5 md-colors="{'color':'grey-A100'}" ng-show="selectedShip">Auxiliary</h5>
-              </md-card-content>
+              <md-card layout="column" layout-align="center center"  md-colors="{'background':'grey-800'}">
+                  <h5 md-colors="{'color':'grey-A100'}" ng-show="selectedShip">Auxiliary Equipment</h5>
+                  <md-button md-colors="{'color':'grey-A100'}" style="font-size: 20px">+</md-button>
+                  <div ng-show="selectedFifthEq"></div>
             </md-card>
           </div>  
         </md-card-content>
@@ -62,7 +61,7 @@
             <img src="static/cardtest-parte5.png" style="width:100%;height:4px;">
         </barraBottom>
         </md-card>
-      <md-card flex-order>
+      <md-card class="custom" flex-order>
           <barraTop>
               <img src="static/cardtest-parte2.png" style="width:100%;height:42px;">
                  <div style="margin-top:-42px;position: relative;">
@@ -71,8 +70,9 @@
                  </div>
           </barraTop>
         <md-card-content >
+          <br>
           <h2 md-colors="{'color':'grey-A100'}">Ship Stats</h2>
-          <div ng-show="selectedShip" layout="row" layout-align="end-start" layout-xs="column">
+          <div ng-show="selectedShip" layout="row" layout-align="center center" layout-xs="column">
           <img ng-src="{{selectedShip.images[0].url}}" alt="ship.names.en" style="width: 250; height: 400;object-fit: contain"/>
           <div>
           <ul>
@@ -142,6 +142,19 @@
             <th>{{stats.anti_sub.total}}</th>
           </tr>
           </table>
+          <div>
+            <div ng-repeat="skill in selectedShip.skills" > 
+              <md-card>
+                <md-card-content  md-colors="{'background':'grey-800'}">
+                  <a md-colors="{'color':'grey-A100'}">Skill name: {{skill.name}}</a>
+                  <br>
+                  <a md-colors="{'color':'grey-A100'}">Skill type: {{skill.type}}</a>
+                  <br>
+                  <a md-colors="{'color':'grey-A100'}" style="font-size: 14px">Description: {{skill.description}}</a>
+                </md-card-content>
+              </md-card>
+            </div>
+          </div>
           </div>
         </div>
         </md-card-content>
