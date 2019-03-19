@@ -2,29 +2,367 @@
      * You must include the dependency on 'ngMaterial' 
      */
     var AzureBuilder = angular.module('AzureBuilder', ['ngMaterial', 'ngMessages', 'chart.js']);
-    AzureBuilder.controller('AzureCtrl', function ($scope, $http) {
+    AzureBuilder.controller('AzureCtrl', function ($scope, $http,$mdDialog) {
 
       $scope.labels = ["Health", "Reload", "Firepower", "Torpedo", "Speed", "Anti Air", "Air Power", "Oil Usage", "Anti Sub"];
-
+      $scope.EqType = {};
       $scope.stats = {};
+      $scope.equipaments = [
+        {
+          name:'teste1',
+          type: 'Auxiliary Equipment',
+          image:'https://azurlane.koumakan.jp/w/images/8/82/7320.png',
+          health: 10,
+          reload: 10,
+          firepower: 10,
+          torpedo: 10,
+          speed: 10,
+          anti_air:10,
+          air_power:10,
+          oil_usage:10,
+          anti_sub:10
+        },
+        {
+          name:'teste2',
+          type: 'Auxiliary Equipment',
+          image:'https://azurlane.koumakan.jp/w/images/8/82/7320.png',
+          health: 15,
+          reload: 15,
+          firepower: 15,
+          torpedo: 15,
+          speed: 15,
+          anti_air:15,
+          air_power:15,
+          oil_usage:15,
+          anti_sub:15
+        },
+        {
+          name:'teste3',
+          type: 'Auxiliary Equipment',
+          image:'https://azurlane.koumakan.jp/w/images/8/82/7320.png',
+          health: 20,
+          reload: 20,
+          firepower: 20,
+          torpedo: 20,
+          speed: 20,
+          anti_air:20,
+          air_power:20,
+          oil_usage:20,
+          anti_sub:20
+        },
+        {
+          name:'teste4',
+          type: 'Fighter',
+          image:'https://azurlane.koumakan.jp/w/images/8/82/7320.png',
+          health: 20,
+          reload: 20,
+          firepower: 20,
+          torpedo: 20,
+          speed: 20,
+          anti_air:20,
+          air_power:20,
+          oil_usage:20,
+          anti_sub:20
+        },
+        {
+          name:'teste5',
+          type: 'Dive Bomber',
+          image:'https://azurlane.koumakan.jp/w/images/8/82/7320.png',
+          health: 20,
+          reload: 20,
+          firepower: 20,
+          torpedo: 20,
+          speed: 20,
+          anti_air:20,
+          air_power:20,
+          oil_usage:20,
+          anti_sub:20
+        },
+        {
+          name:'teste6',
+          type: 'Torpedo Bomber',
+          image:'https://azurlane.koumakan.jp/w/images/8/82/7320.png',
+          health: 20,
+          reload: 20,
+          firepower: 20,
+          torpedo: 20,
+          speed: 20,
+          anti_air:20,
+          air_power:20,
+          oil_usage:20,
+          anti_sub:20
+        },
+        {
+          name:'teste1',
+          type: 'Auxiliary Equipment',
+          image:'https://azurlane.koumakan.jp/w/images/8/82/7320.png',
+          health: 10,
+          reload: 10,
+          firepower: 10,
+          torpedo: 10,
+          speed: 10,
+          anti_air:10,
+          air_power:10,
+          oil_usage:10,
+          anti_sub:10
+        },
+        {
+          name:'teste2',
+          type: 'Auxiliary Equipment',
+          image:'https://azurlane.koumakan.jp/w/images/8/82/7320.png',
+          health: 15,
+          reload: 15,
+          firepower: 15,
+          torpedo: 15,
+          speed: 15,
+          anti_air:15,
+          air_power:15,
+          oil_usage:15,
+          anti_sub:15
+        },
+        {
+          name:'teste3',
+          type: 'Auxiliary Equipment',
+          image:'https://azurlane.koumakan.jp/w/images/8/82/7320.png',
+          health: 20,
+          reload: 20,
+          firepower: 20,
+          torpedo: 20,
+          speed: 20,
+          anti_air:20,
+          air_power:20,
+          oil_usage:20,
+          anti_sub:20
+        },
+        {
+          name:'teste4',
+          type: 'Fighter',
+          image:'https://azurlane.koumakan.jp/w/images/8/82/7320.png',
+          health: 20,
+          reload: 20,
+          firepower: 20,
+          torpedo: 20,
+          speed: 20,
+          anti_air:20,
+          air_power:20,
+          oil_usage:20,
+          anti_sub:20
+        },
+        {
+          name:'teste5',
+          type: 'Dive Bomber',
+          image:'https://azurlane.koumakan.jp/w/images/8/82/7320.png',
+          health: 20,
+          reload: 20,
+          firepower: 20,
+          torpedo: 20,
+          speed: 20,
+          anti_air:20,
+          air_power:20,
+          oil_usage:20,
+          anti_sub:20
+        },
+        {
+          name:'teste6',
+          type: 'Torpedo Bomber',
+          image:'https://azurlane.koumakan.jp/w/images/8/82/7320.png',
+          health: 20,
+          reload: 20,
+          firepower: 20,
+          torpedo: 20,
+          speed: 20,
+          anti_air:20,
+          air_power:20,
+          oil_usage:20,
+          anti_sub:20
+        },
+        {
+          name:'teste1',
+          type: 'Auxiliary Equipment',
+          image:'https://azurlane.koumakan.jp/w/images/8/82/7320.png',
+          health: 10,
+          reload: 10,
+          firepower: 10,
+          torpedo: 10,
+          speed: 10,
+          anti_air:10,
+          air_power:10,
+          oil_usage:10,
+          anti_sub:10
+        },
+        {
+          name:'teste2',
+          type: 'Auxiliary Equipment',
+          image:'https://azurlane.koumakan.jp/w/images/8/82/7320.png',
+          health: 15,
+          reload: 15,
+          firepower: 15,
+          torpedo: 15,
+          speed: 15,
+          anti_air:15,
+          air_power:15,
+          oil_usage:15,
+          anti_sub:15
+        },
+        {
+          name:'teste3',
+          type: 'Auxiliary Equipment',
+          image:'https://azurlane.koumakan.jp/w/images/8/82/7320.png',
+          health: 20,
+          reload: 20,
+          firepower: 20,
+          torpedo: 20,
+          speed: 20,
+          anti_air:20,
+          air_power:20,
+          oil_usage:20,
+          anti_sub:20
+        },
+        {
+          name:'teste4',
+          type: 'Fighter',
+          image:'https://azurlane.koumakan.jp/w/images/8/82/7320.png',
+          health: 20,
+          reload: 20,
+          firepower: 20,
+          torpedo: 20,
+          speed: 20,
+          anti_air:20,
+          air_power:20,
+          oil_usage:20,
+          anti_sub:20
+        },
+        {
+          name:'teste5',
+          type: 'Dive Bomber',
+          image:'https://azurlane.koumakan.jp/w/images/8/82/7320.png',
+          health: 20,
+          reload: 20,
+          firepower: 20,
+          torpedo: 20,
+          speed: 20,
+          anti_air:20,
+          air_power:20,
+          oil_usage:20,
+          anti_sub:20
+        },
+        {
+          name:'teste6',
+          type: 'Torpedo Bomber',
+          image:'https://azurlane.koumakan.jp/w/images/8/82/7320.png',
+          health: 20,
+          reload: 20,
+          firepower: 20,
+          torpedo: 20,
+          speed: 20,
+          anti_air:20,
+          air_power:20,
+          oil_usage:20,
+          anti_sub:20
+        },
+        {
+          name:'teste1',
+          type: 'Auxiliary Equipment',
+          image:'https://azurlane.koumakan.jp/w/images/8/82/7320.png',
+          health: 10,
+          reload: 10,
+          firepower: 10,
+          torpedo: 10,
+          speed: 10,
+          anti_air:10,
+          air_power:10,
+          oil_usage:10,
+          anti_sub:10
+        },
+        {
+          name:'teste2',
+          type: 'Auxiliary Equipment',
+          image:'https://azurlane.koumakan.jp/w/images/8/82/7320.png',
+          health: 15,
+          reload: 15,
+          firepower: 15,
+          torpedo: 15,
+          speed: 15,
+          anti_air:15,
+          air_power:15,
+          oil_usage:15,
+          anti_sub:15
+        },
+        {
+          name:'teste3',
+          type: 'Auxiliary Equipment',
+          image:'https://azurlane.koumakan.jp/w/images/8/82/7320.png',
+          health: 20,
+          reload: 20,
+          firepower: 20,
+          torpedo: 20,
+          speed: 20,
+          anti_air:20,
+          air_power:20,
+          oil_usage:20,
+          anti_sub:20
+        },
+        {
+          name:'teste4',
+          type: 'Fighter',
+          image:'https://azurlane.koumakan.jp/w/images/8/82/7320.png',
+          health: 20,
+          reload: 20,
+          firepower: 20,
+          torpedo: 20,
+          speed: 20,
+          anti_air:20,
+          air_power:20,
+          oil_usage:20,
+          anti_sub:20
+        },
+        {
+          name:'teste5',
+          type: 'Dive Bomber',
+          image:'https://azurlane.koumakan.jp/w/images/8/82/7320.png',
+          health: 20,
+          reload: 20,
+          firepower: 20,
+          torpedo: 20,
+          speed: 20,
+          anti_air:20,
+          air_power:20,
+          oil_usage:20,
+          anti_sub:20
+        },
+        {
+          name:'teste6',
+          type: 'Torpedo Bomber',
+          image:'https://azurlane.koumakan.jp/w/images/8/82/7320.png',
+          health: 20,
+          reload: 20,
+          firepower: 20,
+          torpedo: 20,
+          speed: 20,
+          anti_air:20,
+          air_power:20,
+          oil_usage:20,
+          anti_sub:20
+        },
+      ];
 
       $scope.$watch('selectedShip', function () {
         if ($scope.selectedShip) {
           $scope.stats = {
             health: {
               base: $scope.selectedShip.max.health,
-              equip: 200,
-              total: ($scope.selectedShip.max.health + 200)
+              equip: 0,
+              total: ($scope.selectedShip.max.health + 0)
             },
             reload: {
               base: $scope.selectedShip.max.reload,
-              equip: 12,
-              total: $scope.selectedShip.max.reload + 12
+              equip: 0,
+              total: $scope.selectedShip.max.reload + 0
             },
             firepower: {
               base: $scope.selectedShip.max.firepower,
-              equip: 19,
-              total: $scope.selectedShip.max.firepower + 19
+              equip: 0,
+              total: $scope.selectedShip.max.firepower + 0
             },
             torpedo: {
               base: $scope.selectedShip.max.torpedo,
@@ -72,4 +410,44 @@
             return $scope.results;
           });
       };
+
+      $scope.showEquip = function(type,index) {
+        console.log(type);
+        $scope.EqType.type = type;
+        $scope.EqType.index = index;
+        $mdDialog.show({
+          contentElement: '#myStaticDialog',
+          parent: angular.element(document.body),
+          clickOutsideToClose: true,
+          escapeToClose: true
+        });
+      };
+
+      $scope.SelectEquip = function(equip,index){
+        switch (index) {
+          case 1:
+          $scope.selectedFirstEq = equip;
+          break;
+          case 2:
+          $scope.selectedSecondEq = equip;
+          break;
+          case 3:
+          $scope.selectedThirdEq = equip;
+          break;
+          case 4:
+          $scope.selectedFourthEq = equip;
+          break;
+          case 5:
+          $scope.selectedFifthEq = equip;
+          break;
+        
+          default:
+          console.log("no equip index, oof");
+          break;
+        }
+        $mdDialog.hide({
+          contentElement: '#myStaticDialog',
+          parent: angular.element(document.body)
+        });
+      }
     });

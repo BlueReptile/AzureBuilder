@@ -3,6 +3,10 @@
   height: auto;
 }
 
+md-dialog{
+  overflow:scroll;
+}
+
 ul{
   list-style-type:none;
   }
@@ -29,7 +33,6 @@ body {
   text-shadow: 2px 2px black;
   background-repeat: no-repeat;
   height: auto;
-  
 }
 
 @media (max-width: 887px){
@@ -60,4 +63,24 @@ body {
 }
 .content{
 	margin-top:10px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }
