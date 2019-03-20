@@ -18,7 +18,7 @@
                 <img src="static/cardtest-parte3.png" style="max-width:236px;max-height:42px;" class="right-element">
                  </div>
           </barraTop>
-        <md-card-content class="content" layout="column" layout-align="center center">
+        <md-card-content class="content" layout="column" layout-align="center center" style="min-width: 600px">
           <h2 md-colors="{'color':'grey-A100'}">Ship and Equips</h2>
           <md-autocomplete placeholder="ShipGirl Name" style="width: 300;" md-no-cache="true" md-selected-item="selectedShip" md-items="ship in query(searchText)" md-search-text="searchText" md-item-text="ship.names.en">
             <md-item-template layout-align="center center">
@@ -28,7 +28,7 @@
               </div>
             </md-item-template>
           </md-autocomplete>
-          <div ng-show="selectedShip" layout="row" layout-align="center center" layout-xs="column">
+          <div ng-show="selectedShip" layout="column" layout-align="center center" layout-xs="column">
               <md-card layout="column" layout-align="center center"  md-colors="{'background':'grey-800'}">
                 <h5 ng-hide="selectedFirstEq" md-colors="{'color':'grey-A100'}">{{selectedShip.equipment[0].equipable}}</h5>
                 <md-button ng-hide="selectedFirstEq" ng-click="showEquip(selectedShip.equipment[0].equipable,1)" md-colors="{'color':'grey-A100'}" style="font-size: 20px">+</md-button>
