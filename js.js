@@ -344,13 +344,13 @@
                     equipament.type = 'DD Main Guns';
                     break;
                   case 2:
-                    equipament.image = (element.getElementsByTagName('img')[0].src + '').replace('file:///C:/', 'https://azurlane.koumakan.jp/');
+                    equipament.image = (element.getElementsByTagName('img')[0].src + '').replace('https://bluereptile.github.io/', 'https://azurlane.koumakan.jp/');
                     break;
                   case 3:
                     equipament.rarity = element.innerText;
                     break;
                   case 4:
-                    equipament.nationality = (element.getElementsByTagName('img')[0].src + '').replace('file:///C:/', 'https://azurlane.koumakan.jp/');
+                    equipament.nationality = (element.getElementsByTagName('img')[0].src + '').replace('https://bluereptile.github.io/', 'https://azurlane.koumakan.jp/');
                     break;
                   case 5:
                     equipament.firepower = parseInt(element.innerText);
