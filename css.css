@@ -48,9 +48,6 @@ body {
   min-width: 200;
   max-width: 600px;
 }
-
-.card-size{
-}
 }
 @media (min-width: 888px){
 .card-size{
