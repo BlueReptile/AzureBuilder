@@ -2,7 +2,9 @@
   line-height: inherit;
   height: auto;
 }
-
+md-card, md-card-content{
+  overflow: visible;
+}
 md-dialog{
   overflow:scroll;
 }
@@ -72,15 +74,15 @@ body {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #00000000; 
 }
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: rgb(70, 70, 70); 
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: rgb(43, 43, 43); 
 }
