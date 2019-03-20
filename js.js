@@ -6,7 +6,64 @@
 
       $scope.labels = ["Health", "Reload", "Firepower", "Torpedo", "Speed", "Anti Air", "Air Power", "Oil Usage", "Anti Sub"];
       $scope.EqType = {};
-      $scope.stats = {};
+      $scope.TotalEquip={
+        health: 0,
+        reload: 0,
+        firepower: 0,
+        torpedo: 0,
+        speed: 0,
+        anti_air:0,
+        air_power:0,
+        oil_usage:0,
+        anti_sub:0
+      }
+      $scope.stats = {
+        health: {
+          base: 0,
+          equip: 0,
+          total: 0
+        },
+        reload: {
+          base: 0,
+          equip: 0,
+          total: 0
+        },
+        firepower: {
+          base: 0,
+          equip: 0,
+          total: 0
+        },
+        torpedo: {
+          base: 0,
+          equip: 0,
+          total: 0
+        },
+        speed: {
+          base: 0,
+          equip: 0,
+          total: 0
+        },
+        anti_air: {
+          base: 0,
+          equip: 0,
+          total: 0
+        },
+        air_power: {
+          base: 0,
+          equip: 0,
+          total: 0
+        },
+        oil_usage: {
+          base: 0,
+          equip: 0,
+          total: 0
+        },
+        anti_sub: {
+          base: 0,
+          equip: 0,
+          total: 0
+        }
+      };
       $scope.equipaments = [
         {
           name:'teste1',
@@ -346,55 +403,121 @@
         },
       ];
 
-      $scope.$watch('selectedShip', function () {
+      $scope.$watch(function() {
+        return angular.toJson([$scope.selectedShip, $scope.TotalEquip]);
+      }, function () {
         if ($scope.selectedShip) {
           $scope.stats = {
             health: {
               base: $scope.selectedShip.max.health,
-              equip: 0,
-              total: ($scope.selectedShip.max.health + 0)
+              equip: $scope.TotalEquip.health,
+              total: ($scope.selectedShip.max.health + $scope.TotalEquip.health)
             },
             reload: {
               base: $scope.selectedShip.max.reload,
-              equip: 0,
-              total: $scope.selectedShip.max.reload + 0
+              equip: $scope.TotalEquip.reload,
+              total: ($scope.selectedShip.max.reload + $scope.TotalEquip.reload)
             },
             firepower: {
               base: $scope.selectedShip.max.firepower,
-              equip: 0,
-              total: $scope.selectedShip.max.firepower + 0
+              equip: $scope.TotalEquip.firepower,
+              total: ($scope.selectedShip.max.firepower + $scope.TotalEquip.firepower)
             },
             torpedo: {
               base: $scope.selectedShip.max.torpedo,
-              equip: 0,
-              total: $scope.selectedShip.max.torpedo + 0
+              equip: $scope.TotalEquip.torpedo,
+              total: ($scope.selectedShip.max.torpedo + $scope.TotalEquip.torpedo)
             },
             speed: {
               base: $scope.selectedShip.max.speed,
-              equip: 0,
-              total: $scope.selectedShip.max.speed + 0
+              equip: $scope.TotalEquip.speed,
+              total: ($scope.selectedShip.max.speed + $scope.TotalEquip.speed)
             },
             anti_air: {
               base: $scope.selectedShip.max.anti_air,
-              equip: 0,
-              total: $scope.selectedShip.max.anti_air + 0
+              equip: $scope.TotalEquip.anti_air,
+              total: ($scope.selectedShip.max.anti_air + $scope.TotalEquip.anti_air)
             },
             air_power: {
               base: $scope.selectedShip.max.air_power,
-              equip: 0,
-              total: $scope.selectedShip.max.air_power + 0
+              equip: $scope.TotalEquip.air_power,
+              total: ($scope.selectedShip.max.air_power + $scope.TotalEquip.air_power)
             },
             oil_usage: {
               base: $scope.selectedShip.max.oil_usage,
-              equip: 0,
-              total: $scope.selectedShip.max.oil_usage + 0
+              equip: $scope.TotalEquip.oil_usage,
+              total: ($scope.selectedShip.max.oil_usage + $scope.TotalEquip.oil_usage)
             },
             anti_sub: {
               base: $scope.selectedShip.max.anti_sub,
-              equip: 0,
-              total: $scope.selectedShip.max.anti_sub + 0
+              equip: $scope.TotalEquip.anti_sub,
+              total: ($scope.selectedShip.max.anti_sub + $scope.TotalEquip.anti_sub)
             }
           }
+        }else{
+          $scope.TotalEquip={
+            health: 0,
+            reload: 0,
+            firepower: 0,
+            torpedo: 0,
+            speed: 0,
+            anti_air:0,
+            air_power:0,
+            oil_usage:0,
+            anti_sub:0
+          }
+          $scope.stats = {
+            health: {
+              base: 0,
+              equip: 0,
+              total: 0
+            },
+            reload: {
+              base: 0,
+              equip: 0,
+              total: 0
+            },
+            firepower: {
+              base: 0,
+              equip: 0,
+              total: 0
+            },
+            torpedo: {
+              base: 0,
+              equip: 0,
+              total: 0
+            },
+            speed: {
+              base: 0,
+              equip: 0,
+              total: 0
+            },
+            anti_air: {
+              base: 0,
+              equip: 0,
+              total: 0
+            },
+            air_power: {
+              base: 0,
+              equip: 0,
+              total: 0
+            },
+            oil_usage: {
+              base: 0,
+              equip: 0,
+              total: 0
+            },
+            anti_sub: {
+              base: 0,
+              equip: 0,
+              total: 0
+            }
+          };
+          $scope.selectedFirstEq = undefined;
+          $scope.selectedSecondEq = undefined;
+          $scope.selectedThirdEq = undefined;
+          $scope.selectedFourthEq = undefined;
+          $scope.selectedFifthEq = undefined;
         }
 
       });
@@ -423,24 +546,52 @@
         });
       };
 
+      $scope.ProcessEquip = function(equip,OldEquip){
+        if(OldEquip){
+        $scope.TotalEquip.health -= OldEquip.health;
+        $scope.TotalEquip.reload -= OldEquip.reload;
+        $scope.TotalEquip.firepower -= OldEquip.firepower;
+        $scope.TotalEquip.torpedo -= OldEquip.torpedo;
+        $scope.TotalEquip.speed -= OldEquip.speed;
+        $scope.TotalEquip.anti_air -= OldEquip.anti_air;
+        $scope.TotalEquip.air_power -= OldEquip.air_power;
+        $scope.TotalEquip.oil_usage -= OldEquip.oil_usage;
+        $scope.TotalEquip.anti_sub -= OldEquip.anti_sub;
+        }
+        $scope.TotalEquip.health += equip.health;
+        $scope.TotalEquip.reload += equip.reload;
+        $scope.TotalEquip.firepower += equip.firepower;
+        $scope.TotalEquip.torpedo += equip.torpedo;
+        $scope.TotalEquip.speed += equip.speed;
+        $scope.TotalEquip.anti_air += equip.anti_air;
+        $scope.TotalEquip.air_power += equip.air_power;
+        $scope.TotalEquip.oil_usage += equip.oil_usage;
+        $scope.TotalEquip.anti_sub += equip.anti_sub;
+        console.log($scope.TotalEquip);
+      }
+
       $scope.SelectEquip = function(equip,index){
         switch (index) {
           case 1:
+          $scope.ProcessEquip(equip,$scope.selectedFirstEq? $scope.selectedFirstEq : false);
           $scope.selectedFirstEq = equip;
           break;
           case 2:
+          $scope.ProcessEquip(equip,$scope.selectedSecondEq? $scope.selectedSecondEq : false);
           $scope.selectedSecondEq = equip;
           break;
           case 3:
+          $scope.ProcessEquip(equip,$scope.selectedThirdEq? $scope.selectedThirdEq : false);
           $scope.selectedThirdEq = equip;
           break;
           case 4:
+          $scope.ProcessEquip(equip,$scope.selectedFourthEq? $scope.selectedFourthEq : false);
           $scope.selectedFourthEq = equip;
           break;
           case 5:
+          $scope.ProcessEquip(equip,$scope.selectedFifthEq? $scope.selectedFifthEq : false);
           $scope.selectedFifthEq = equip;
           break;
-        
           default:
           console.log("no equip index, oof");
           break;
@@ -450,4 +601,6 @@
           parent: angular.element(document.body)
         });
       }
+
+      
     });
