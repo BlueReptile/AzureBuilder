@@ -869,7 +869,6 @@
               let item = col.getElementsByTagName('td');
               let equipament = {};
               for (let index = 0; index < item.length; index++) {
-                console.log('éeeeeeeeeeeeeeeeeeeeeeeeeeeee');
                 let element = item[index];
                 switch (index) {
                   case 0:
@@ -952,6 +951,103 @@
           });
       };
 
+
+      $scope.GetAllTBombers = function () {
+        return $http
+          .get('https://cors-anywhere.herokuapp.com/https://azurlane.koumakan.jp/List_of_Torpedo_Bombers')
+          .then(function (data) {
+            let parser = new DOMParser();
+            let htmlDoc = parser.parseFromString(data.data, 'text/html');
+            let tables = htmlDoc.getElementsByClassName("tabbertab");
+            let MaxTable = tables[1];
+            let rows = MaxTable.getElementsByTagName('tr');
+            for (let i = 0; i < rows.length; i++) {
+              let col = rows[i];
+              let item = col.getElementsByTagName('td');
+              let equipament = {};
+              for (let index = 0; index < item.length; index++) {
+                let element = item[index];
+                switch (index) {
+                  case 0:
+                    equipament.name = element.innerText;
+                    break;
+                  case 1:
+                    equipament.image = (element.getElementsByTagName('img')[0].src + '').replace('https://bluereptile.github.io/', 'https://azurlane.koumakan.jp/');
+                    break;
+                  case 2:
+                    equipament.rarity = element.innerText;
+                    break;
+                  case 3:
+                    equipament.nationality = (element.getElementsByTagName('img')[0].src + '').replace('https://bluereptile.github.io/', 'https://azurlane.koumakan.jp/');
+                    break;
+                  case 4:
+                    equipament.air_power = parseInt(element.innerText);
+                    break;
+                  case 5:
+                    equipament.tier = parseInt(element.innerText);
+                    break;
+                  case 6:
+                    equipament.torpedoType = parseInt(element.innerText);
+                    break;
+                  case 7:
+                    equipament.damage = parseInt(element.innerText);
+                    break;
+                  case 8:
+                    equipament.x = parseInt(element.innerText);
+                    break;
+                  case 9:
+                    equipament.rnd = parseInt(element.innerText);
+                    break;
+                  case 11:
+                    equipament.rofs = element.innerText;
+                    break;
+                  case 12:
+                    equipament.DPSL = element.innerText;
+                    break;
+                  case 13:
+                    equipament.DPSM = element.innerText;
+                    break;
+                  case 14:
+                    equipament.DPSH = element.innerText;
+                    break;
+                  case 15:
+                    equipament.PlaneHP = element.innerText;
+                    break;
+                  case 16:
+                    equipament.AAGun1 = element.innerText;
+                    break;
+                  case 16:
+                    equipament.AAGun2 = element.innerText;
+                    break;
+                  case 17:
+                    equipament.AADps = element.innerText;
+                    break;
+                  case 18:
+                    equipament.AABurst = element.innerText;
+                    break;
+                  case 19:
+                    equipament.dropLoc = element.innerText;
+                    break;
+                  case 20:
+                    equipament.notes = element.innerText;
+                    equipament.torpedo = 0;
+                    equipament.anti_sub = 0;
+                    equipament.health = 0;
+                    equipament.oil_usage = 0;
+                    equipament.reload = 0;
+                    equipament.speed = 0;
+                    equipament.firepower = 0;
+                    equipament.type = 'Torpedo Bomber';
+                    equipament.anti_air = 0;
+                    break;
+                }
+              }
+              console.log(equipament);
+              $scope.equipaments.push(equipament);
+            }
+          });
+      };
+
       $scope.GetAllDestroyer();
       $scope.GetAllLightCruiser();
       $scope.GetAllHeavyCruiser();
@@ -959,4 +1055,5 @@
       $scope.GetAllTorpedoes();
       $scope.GetAllFighters();
       $scope.GetAllBombers();
+      $scope.GetAllTBombers();
     });
