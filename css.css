@@ -44,12 +44,20 @@ body {
     z-index: 2;
     margin-top: -42px;
 }
+
+.card-size{
+}
+}
+@media (min-width: 888px){
+.card-size{
+  min-width: 500px;
 }
 
 .right-element {
   display: inline-block;
   float: right;
   z-index: 2;
+}
 }
 
 .left-element {
