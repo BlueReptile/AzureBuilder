@@ -102,62 +102,61 @@
           <table ng-show="selectedShip">
           <tr>
             <th md-colors="{'color':'yellow'}">Stats</th>
-            <th md-colors="{'color':'yellow'}">Base</th>
-            <th md-colors="{'color':'yellow'}">Equips</th>
+            <th md-colors="{'color':'yellow'}">Base-Equip</th>
             <th md-colors="{'color':'yellow'}">Total</th>
           </tr>
           <tr>
             <th>Health:</th>
-            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#5ec45e','width':((stats.health.base*100) / stats.health.total)}"><md-tooltip md-direction="top">Base Health: {{stats.health.base}}</md-tooltip></div></th>
-            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#07910e','width':((stats.health.equip*100) / stats.health.total)}"><md-tooltip md-direction="top">Itens Health: {{stats.health.equip}}</md-tooltip></div></th>
+            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#5ec45e','width':((stats.health.base*100) / stats.health.total)}"><md-tooltip md-direction="top">Base Health: {{stats.health.base}}</md-tooltip></div>
+            <div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#07910e','width':((stats.health.equip*100) / stats.health.total)}"><md-tooltip md-direction="top">Itens Health: {{stats.health.equip}}</md-tooltip></div></th>
             <th>{{stats.health.total}}</th>
           </tr>
           <tr>
             <th>Reload:</th>
-            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#7faef9','width':((stats.reload.base*100) / stats.reload.total)}"><md-tooltip md-direction="top">Base Reload: {{stats.reload.base}}</md-tooltip></div></th>
-            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#688ec9','width':((stats.reload.equip*100) / stats.reload.total)}"><md-tooltip md-direction="top">Itens Reload: {{stats.reload.equip}}</md-tooltip></div></th>
+            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#7faef9','width':((stats.reload.base*100) / stats.reload.total)}"><md-tooltip md-direction="top">Base Reload: {{stats.reload.base}}</md-tooltip></div>
+            <div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#688ec9','width':((stats.reload.equip*100) / stats.reload.total)}"><md-tooltip md-direction="top">Itens Reload: {{stats.reload.equip}}</md-tooltip></div></th>
             <th>{{stats.reload.total}}</th>
           </tr>
           <tr>
             <th>Firepower:</th>
-            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#c96868','width':((stats.firepower.base*100) / stats.firepower.total)}"><md-tooltip md-direction="top">Base firepower: {{stats.firepower.base}}</md-tooltip></div></th>
-            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#a55454','width':((stats.firepower.equip*100) / stats.firepower.total)}"><md-tooltip md-direction="top">Itens firepower: {{stats.firepower.equip}}</md-tooltip></div></th>
+            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#c96868','width':((stats.firepower.base*100) / stats.firepower.total)}"><md-tooltip md-direction="top">Base firepower: {{stats.firepower.base}}</md-tooltip></div>
+            <div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#a55454','width':((stats.firepower.equip*100) / stats.firepower.total)}"><md-tooltip md-direction="top">Itens firepower: {{stats.firepower.equip}}</md-tooltip></div></th>
             <th>{{stats.firepower.total}}</th>
           </tr>
           <tr>
             <th>Torpedo:</th>
-            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#8f42f4','width':((stats.torpedo.base*100) / stats.torpedo.total)}"><md-tooltip md-direction="top">Base torpedo: {{stats.torpedo.base}}</md-tooltip></div></th>
-            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#7435c6','width':((stats.torpedo.equip*100) / stats.torpedo.total)}"><md-tooltip md-direction="top">Itens torpedo: {{stats.torpedo.equip}}</md-tooltip></div></th>
+            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#8f42f4','width':((stats.torpedo.base*100) / stats.torpedo.total)}"><md-tooltip md-direction="top">Base torpedo: {{stats.torpedo.base}}</md-tooltip></div>
+            <div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#7435c6','width':((stats.torpedo.equip*100) / stats.torpedo.total)}"><md-tooltip md-direction="top">Itens torpedo: {{stats.torpedo.equip}}</md-tooltip></div></th>
             <th>{{stats.torpedo.total}}</th>
           </tr>
           <tr>
             <th>Speed:</th>
-            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#e5df39','width':((stats.speed.base*100) / stats.speed.total)}"><md-tooltip md-direction="top">Base torpedo: {{stats.speed.base}}</md-tooltip></div></th>
-            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#c6c135','width':((stats.speed.equip*100) / stats.speed.total)}"><md-tooltip md-direction="top">Itens torpedo: {{stats.speed.equip}}</md-tooltip></div></th>
+            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#e5df39','width':((stats.speed.base*100) / stats.speed.total)}"><md-tooltip md-direction="top">Base torpedo: {{stats.speed.base}}</md-tooltip></div>
+            <div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#c6c135','width':((stats.speed.equip*100) / stats.speed.total)}"><md-tooltip md-direction="top">Itens torpedo: {{stats.speed.equip}}</md-tooltip></div></th>
             <th>{{stats.speed.total}}</th>
           </tr>
           <tr>
             <th>Anti Air:</th>
-            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#ce4ae0','width':((stats.anti_air.base*100) / stats.anti_air.total)}"><md-tooltip md-direction="top">Base anti_air: {{stats.anti_air.base}}</md-tooltip></div></th>
-            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#9a30a8','width':((stats.anti_air.equip*100) / stats.anti_air.total)}"><md-tooltip md-direction="top">Itens anti_air: {{stats.anti_air.equip}}</md-tooltip></div></th>
+            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#ce4ae0','width':((stats.anti_air.base*100) / stats.anti_air.total)}"><md-tooltip md-direction="top">Base anti_air: {{stats.anti_air.base}}</md-tooltip></div>
+            <div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#9a30a8','width':((stats.anti_air.equip*100) / stats.anti_air.total)}"><md-tooltip md-direction="top">Itens anti_air: {{stats.anti_air.equip}}</md-tooltip></div></th>
             <th>{{stats.anti_air.total}}</th>
           </tr>
           <tr>
-            <th>Air Power:</th>
-            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#d1d1d1','width':((stats.air_power.base*100) / stats.air_power.total)}"><md-tooltip md-direction="top">Base air_power: {{stats.air_power.base}}</md-tooltip></div></th>
-            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#8e8e8e','width':((stats.air_power.equip*100) / stats.air_power.total)}"><md-tooltip md-direction="top">Itens air_power: {{stats.air_power.equip}}</md-tooltip></div></th>
+            <th>Aviation:</th>
+            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#d1d1d1','width':((stats.air_power.base*100) / stats.air_power.total)}"><md-tooltip md-direction="top">Base air_power: {{stats.air_power.base}}</md-tooltip></div>
+            <div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#8e8e8e','width':((stats.air_power.equip*100) / stats.air_power.total)}"><md-tooltip md-direction="top">Itens air_power: {{stats.air_power.equip}}</md-tooltip></div></th>
             <th>{{stats.air_power.total}}</th>
           </tr>
           <tr>
             <th>Oil Usage:</th>
-            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#8e7e63','width':((stats.oil_usage.base*100) / stats.oil_usage.total)}"><md-tooltip md-direction="top">Base oil_usage: {{stats.oil_usage.base}}</md-tooltip></div></th>
-            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#514127','width':((stats.oil_usage.equip*100) / stats.oil_usage.total)}"><md-tooltip md-direction="top">Itens oil_usage: {{stats.oil_usage.equip}}</md-tooltip></div></th>
+            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#8e7e63','width':((stats.oil_usage.base*100) / stats.oil_usage.total)}"><md-tooltip md-direction="top">Base oil_usage: {{stats.oil_usage.base}}</md-tooltip></div>
+            <div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#514127','width':((stats.oil_usage.equip*100) / stats.oil_usage.total)}"><md-tooltip md-direction="top">Itens oil_usage: {{stats.oil_usage.equip}}</md-tooltip></div></th>
             <th>{{stats.oil_usage.total}}</th>
           </tr>
           <tr>
             <th>Anti Sub:</th>
-            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#22d2d8','width':((stats.anti_sub.base*100) / stats.anti_sub.total)}"><md-tooltip md-direction="top">Base anti_sub: {{stats.anti_sub.base}}</md-tooltip></div></th>
-            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#18a1a5','width':((stats.anti_sub.equip*100) / stats.anti_sub.total)}"><md-tooltip md-direction="top">Itens anti_sub: {{stats.anti_sub.equip}}</md-tooltip></div></th>
+            <th><div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#22d2d8','width':((stats.anti_sub.base*100) / stats.anti_sub.total)}"><md-tooltip md-direction="top">Base anti_sub: {{stats.anti_sub.base}}</md-tooltip></div>
+            <div ng-show="selectedShip" class="bar" ng-style="{'background-color': '#18a1a5','width':((stats.anti_sub.equip*100) / stats.anti_sub.total)}"><md-tooltip md-direction="top">Itens anti_sub: {{stats.anti_sub.equip}}</md-tooltip></div></th>
             <th>{{stats.anti_sub.total}}</th>
           </tr>
           </table>
