@@ -44,6 +44,10 @@ body {
     z-index: 2;
     margin-top: -42px;
 }
+.selector{
+  min-width: 200;
+  max-width: 600px;
+}
 
 .card-size{
 }
@@ -51,6 +55,11 @@ body {
 @media (min-width: 888px){
 .card-size{
   min-width: 500px;
+}
+
+.selector{
+  min-width: 500;
+  max-width: 900px;
 }
 
 .right-element {
